@@ -5,18 +5,13 @@ flatpak install flathub -y com.bitwarden.desktop
 
 #base
 sudo pacman -Suy --noconfirm base-devel yay vim \
-git cmake make valgrind gparted fastfetch \ 
+git cmake make valgrind gparted fastfetch \
 btop tree cloc speedtest-cli ffmpeg 
 
 #Virtualization
 sudo pacman -Suy --noconfirm docker docker-compose \
 distrobox \
-virtualbox linux66-virtualbox-host-modules \
-sudo systemctl start docker.service
-sudo groupadd docker
-sudo usermod -aG docker $USER
-newgrp docker
-sudo docker run hello-world
+virtualbox linux66-virtualbox-host-modules
 
 #IDE
 yay -Suy --noconfirm visual-studio-code-bin
