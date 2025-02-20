@@ -3,6 +3,7 @@ flatpak install flathub -y io.github.vikdevelop.SaveDesktop
 flatpak install flathub -y com.google.Chrome 
 flatpak install flathub -y com.bitwarden.desktop 
 
+
 #base
 sudo pacman -Suy --noconfirm base-devel yay vim \
 git cmake make valgrind gparted fastfetch \
@@ -42,9 +43,20 @@ gsettings set org.gnome.settings-daemon.plugins.media-keys.custom-keybinding:/or
 gsettings set org.gnome.settings-daemon.plugins.media-keys.custom-keybinding:/org/gnome/settings-daemon/plugins/media-keys/custom-keybindings/custom1/ command 'flatpak run org.flameshot.Flameshot gui'
 gsettings set org.gnome.settings-daemon.plugins.media-keys.custom-keybinding:/org/gnome/settings-daemon/plugins/media-keys/custom-keybindings/custom1/ binding 'Print'
 
+#install all flatpaks
+flatpak remote-add --if-not-exists flathub https://dl.flathub.org/repo/flathub.flatpakrepo
+flatpak remote-add --if-not-exists gnome-nightly https://nightly.gnome.org/gnome-nightly.flatpakrepo
+
+awk '{print "flatpak install -y "$1" "$2}' ./flatpak.txt > /tmp/flatpak_install.sh
+sudo chmod +x /tmp/flatpak_install.sh
+/tmp/flatpak_install.sh
+
 
 #Others
 yay -Suy --noconfirm gnome-shell-pomodoro
+
+
+
 
 
 #Remove unused packages
