@@ -1,6 +1,7 @@
 #install essential flatpaks
-flatpak install flathub io.github.vikdevelop.SaveDesktop \
-com.google.Chrome com.bitwarden.desktop -y 
+flatpak install flathub -y io.github.vikdevelop.SaveDesktop 
+flatpak install flathub -y com.google.Chrome 
+flatpak install flathub -y com.bitwarden.desktop 
 
 #base
 sudo pacman -Suy --noconfirm base-devel yay vim \
@@ -18,11 +19,11 @@ newgrp docker
 sudo docker run hello-world
 
 #IDE
-sudo yay -Suy --noconfirm visual-studio-code-bin
-sudo pacman -Suy github-cli
+yay -Suy --noconfirm visual-studio-code-bin
+sudo pacman -Suy --noconfirm github-cli
 
 #Nvidia
-yay -Suy envycontrol
+yay -Suy --noconfirm envycontrol
 
 if command -v nvidia-smi &>/dev/null; then
     echo "nvidia-smi exists"
@@ -30,8 +31,8 @@ if command -v nvidia-smi &>/dev/null; then
 fi
 
 #Terminal
-sudo pacman -Suy tilix tmux zsh
-sudo pacman -Rs gnome-terminal
+sudo pacman -Suy --noconfirm tilix tmux zsh
+sudo pacman -Rs --noconfirm gnome-terminal
 sh -c "$(curl -fsSL https://raw.githubusercontent.com/ohmyzsh/ohmyzsh/master/tools/install.sh)" "" --unattended
 gsettings set org.gnome.settings-daemon.plugins.media-keys custom-keybindings "['/org/gnome/settings-daemon/plugins/media-keys/custom-keybindings/custom0/']"
 gsettings set org.gnome.settings-daemon.plugins.media-keys.custom-keybinding:/org/gnome/settings-daemon/plugins/media-keys/custom-keybindings/custom0/ name 'tilix'
@@ -55,4 +56,4 @@ yay -Suy --noconfirm gnome-shell-pomodoro
 
 
 
-sudo  pacman -Qdtq | sudo pacman -Rns -
+sudo  pacman --noconfirm -Qdtq | sudo pacman --noconfirm -Rns -
