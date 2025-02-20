@@ -1,4 +1,5 @@
 #install essential flatpaks
+sudo pacman -Syu --noconfirm flatpak
 flatpak install flathub -y io.github.vikdevelop.SaveDesktop 
 flatpak install flathub -y com.google.Chrome 
 flatpak install flathub -y com.bitwarden.desktop 
